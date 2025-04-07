@@ -1,4 +1,4 @@
-package kr.co.fitzstock.fitzstock;
+package kr.co.fitzstock;
 
 import java.io.*;
 
