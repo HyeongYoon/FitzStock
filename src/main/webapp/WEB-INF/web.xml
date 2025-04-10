@@ -22,6 +22,16 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- Root Context 설정 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/application-context.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <!-- 한글 깨짐 방지 필터 -->
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -35,6 +45,17 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
+
+    <!-- Spring Security 필터 연결 -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>

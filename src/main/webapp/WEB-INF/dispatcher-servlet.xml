@@ -11,8 +11,8 @@
           http://www.springframework.org/schema/mvc
           https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- @Controller 스캔 -->
-    <context:component-scan base-package="kr.co.fitzstock.controller" />
+    <!-- 스캔 범위 확장 -->
+    <context:component-scan base-package="kr.co.fitzstock" />
 
     <!-- ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -20,7 +20,6 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <!-- MVC 기본 설정 -->
+    <!-- MVC 설정 -->
     <mvc:annotation-driven />
-
 </beans>

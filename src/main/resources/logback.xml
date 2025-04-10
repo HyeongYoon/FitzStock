@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 콘솔 출력 Appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 파일 출력 Appender -->
+    <appender name="STACKTRACE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/stacktrace.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>[%level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Spring 및 프로젝트 관련 로거 -->
+    <logger name="org.springframework" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STACKTRACE" />
+    </logger>
+
+    <logger name="org.springframework.security" level="DEBUG" additivity="false"> <!-- Spring Security 관련 로그 -->
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STACKTRACE" />
+    </logger>
+
+    <logger name="org.mybatis" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STACKTRACE" />
+    </logger>
+
+    <logger name="kr.co.fitzstock" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STACKTRACE" />
+    </logger>
+
+    <!-- Tomcat 관련 로거 -->
+    <logger name="org.apache.catalina" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STACKTRACE" />
+    </logger>
+
+    <!-- 기본 로거 설정 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STACKTRACE" />
+    </root>
+
+</configuration>
